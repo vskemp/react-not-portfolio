@@ -8,14 +8,21 @@ import Nav from './Nav';
 
 const webContent = `vdgavdhagdahygahgdahdgahsjdgashdgvs hash  ghdhs bjuhdg uadhguadgausidgauyidgtyuisdgh d ayhdgaydgydgadh ud hud hujh`; 
 const headText = `The Amazin' Web Dev`;
+const linkNames = [
+  'Home',
+  'Portfolio',
+  'Contact'
+];
 
 function App() {
   return (
-    <div>
+    <div className="container-fluid">
       <Header 
         title={headText}
       />
-      <Nav />
+      <Nav
+        links={linkNames}
+      />
       <Body 
         content={webContent}
       />
