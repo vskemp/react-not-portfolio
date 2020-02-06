@@ -5,30 +5,68 @@ import Header from './Header';
 import Body from './Body';
 import Footer from './Footer';
 import Nav from './Nav';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-const webContent = `vdgavdhagdahygahgdahdgahsjdgashdgvs hash  ghdhs bjuhdg uadhguadgausidgauyidgtyuisdgh d ayhdgaydgydgadh ud hud hujh`; 
+const webContent = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
+sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`; 
 const headText = `The Amazin' Web Dev`;
 const linkNames = [
-  'Home',
-  'Portfolio',
-  'Contact'
+  {
+    text: 'Home',
+    path: '/'
+  },
+  {
+    text: 'Blog',
+    path: '/blog'
+  }
 ];
 
 function App() {
   return (
-    <div className="container-fluid">
-      <Header 
-        title={headText}
-      />
-      <Nav
-        links={linkNames}
-      />
-      <Body 
-        content={webContent}
-      />
-      <Footer />
-    </div>
+    <Router>
+      <Nav links={linkNames} />
+      {/* <ul>
+        <li><Link to ="/">Home</Link></li>
+        <li><Link to ="/blog">Blog</Link></li>
+      </ul> */}
+      {/* <div className="container-fluid">
+        <Header 
+          title={headText}
+        />
+        <Nav
+          links={linkNames}
+        />
+        <Body 
+          content={webContent}
+        />
+        <Footer />
+      </div> */}
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/blog">
+          <Blog />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
+
+function Home() {
+  return <h1>You are Home</h1>;
+}
+
+function Blog() {
+  return <h1>BLOOOOOOG</h1>;
+}
+
 
 export default App;
